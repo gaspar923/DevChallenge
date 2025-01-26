@@ -23,7 +23,7 @@ Terminado las pruebas, comencé el desarrollo.
 
 ## Usuarios de prueba
 
--   email: admin@gmail.com
+-   email: prueba_admin@gmail.com
 -   contraseña: qEFqD7y92CSLyZK
 
 -   email: prueba_usuario@gmail.com
