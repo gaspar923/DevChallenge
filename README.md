@@ -27,4 +27,4 @@ Terminado las pruebas, comencé el desarrollo.
 -   contraseña: qEFqD7y92CSLyZK
 
 -   email: prueba_usuario@gmail.com
--   contraseña: qEFqD7y92CSLyZK9
+-   contraseña: qEFqD7y92CSLyZ
