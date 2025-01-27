@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Competition;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class CompetitionSeeder extends Seeder
@@ -14,7 +15,9 @@ class CompetitionSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Competition::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         try {
             $response = Http::withHeaders([
                 'X-Auth-Token' => env('API_FOOTBALL_DATA_TOKEN'),
