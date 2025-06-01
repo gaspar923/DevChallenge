@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\User\Repository\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(UserRepository::class);
     }
 
     /**
