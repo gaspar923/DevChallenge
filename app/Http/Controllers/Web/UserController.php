@@ -20,17 +20,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy("id", 'desc');
-        $name = "";
-        if (request()->has("name")) {
+        $users = User::orderBy('id', 'desc');
+        $name = '';
+        if (request()->has('name')) {
             $users = $users->where(function ($query) {
-                $name = request("name");
-                $query->where('name', 'like', '%' . $name . '%')
-                    ->orWhere('email', 'like', '%' . $name . '%');
+                $name = request('name');
+                $query->where('name', 'like', '%'.$name.'%')
+                    ->orWhere('email', 'like', '%'.$name.'%');
             });
         }
         $users = $users->where('active', '=', '1')
-            ->paginate(10)->appends(request()->except("page"));
+            ->paginate(10)->appends(request()->except('page'));
+
         return Inertia::render('User/Index', compact('users', 'name'));
     }
 
@@ -40,6 +41,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+
         return Inertia::render('User/Create', compact('roles'));
     }
 
@@ -68,6 +70,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->getRoleNames();
+
         return Inertia::render('User/Show', compact('user'));
     }
 
@@ -78,6 +81,7 @@ class UserController extends Controller
     {
         $user->getRoleNames();
         $roles = Role::all();
+
         return Inertia::render('User/Edit', compact('user', 'roles'));
     }
 
@@ -97,7 +101,7 @@ class UserController extends Controller
         }
         $user->update($validated);
 
-        $userData = User::select("users.*", "model_has_roles.role_id")
+        $userData = User::select('users.*', 'model_has_roles.role_id')
             ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
             ->where('users.id', $user->id)
             ->get();
@@ -119,11 +123,12 @@ class UserController extends Controller
         //
     }
 
-    function deactivate(User $user)
+    public function deactivate(User $user)
     {
         // $user->deleteProfilePhoto();
         // $user->update(['active' => 2, 'updated_by' => auth()->id()]);
         $user->update(['active' => 2, 'updated_by' => Auth::user()->id]);
+
         return redirect()->back()->with('message', 'Registro eliminado');
     }
 }

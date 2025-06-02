@@ -7,16 +7,17 @@ use Illuminate\Validation\Rules\Password;
 
 class UpdateUserPut extends FormRequest
 {
-    function attributes()
+    public function attributes()
     {
         return [
-            'name' => "nombre",
-            'email' => "email",
-            'password' => "contraseña",
+            'name' => 'nombre',
+            'email' => 'email',
+            'password' => 'contraseña',
 
-            'role' => "rol",
+            'role' => 'rol',
         ];
     }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -35,7 +36,7 @@ class UpdateUserPut extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $this->route('user')->id,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$this->route('user')->id,
             // 'password' => 'required|string|min:8',
             // 'password' => ['required', 'string', 'min:8', Password::defaults()],
             'password' => ['sometimes', 'nullable', 'string', 'min:8', Password::defaults()],

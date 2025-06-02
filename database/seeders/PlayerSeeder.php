@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Player;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 
@@ -24,7 +23,7 @@ class PlayerSeeder extends Seeder
 
                 $response = Http::withHeaders([
                     'X-Auth-Token' => env('API_FOOTBALL_DATA_TOKEN'),
-                ])->get(env('API_FOOTBALL_DATA_URL') . '/persons/' . $players[$i]->id);
+                ])->get(env('API_FOOTBALL_DATA_URL').'/persons/'.$players[$i]->id);
 
                 if ($response->successful()) {
                     $data = $response->json();
@@ -33,11 +32,11 @@ class PlayerSeeder extends Seeder
 
                     $this->command->info('Player seeded successfully!');
                 } elseif ($response->failed()) {
-                    $this->command->error('Failed to seed Player: ' . $response->body());
+                    $this->command->error('Failed to seed Player: '.$response->body());
                 }
             }
         } catch (\Exception $e) {
-            $this->command->error('Failed to seed Player: ' . $e->getMessage());
+            $this->command->error('Failed to seed Player: '.$e->getMessage());
         }
 
         // php artisan db:seed --class=PlayerSeeder

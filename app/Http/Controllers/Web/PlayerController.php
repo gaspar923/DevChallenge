@@ -41,6 +41,7 @@ class PlayerController extends Controller
     {
         if ($player->shirt_number == null) {
             $player = $this->editShirtNumber($player);
+
             return Inertia::render('Player/Show', compact('player'));
         } else {
             return Inertia::render('Player/Show', compact('player'));
@@ -71,11 +72,11 @@ class PlayerController extends Controller
         //
     }
 
-    function editShirtNumber($player)
+    public function editShirtNumber($player)
     {
         $response = Http::withHeaders([
             'X-Auth-Token' => env('API_FOOTBALL_DATA_TOKEN'),
-        ])->get(env('API_FOOTBALL_DATA_URL') . '/persons/' . $player->id);
+        ])->get(env('API_FOOTBALL_DATA_URL').'/persons/'.$player->id);
 
         if ($response->successful()) {
             $data = $response->json();

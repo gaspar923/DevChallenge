@@ -2,8 +2,8 @@
 
 namespace App\Application\UseCases\Player;
 
-use App\Domains\Player\Services\PlayerService;
 use App\Domains\Player\DTOs\PlayerDTO;
+use App\Domains\Player\Services\PlayerService;
 
 class CreatePlayerUseCase
 {
@@ -12,6 +12,7 @@ class CreatePlayerUseCase
     public function execute(array $data)
     {
         $dto = PlayerDTO::fromArray($data);
+
         return $this->playerService->createPlayer($dto);
     }
 }

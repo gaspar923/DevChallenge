@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Domains\Player\Models\Player;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +14,7 @@ class PlayerControllerTest extends TestCase
         $data = [
             'name' => 'Neymar Jr',
             'age' => 32,
-            'team_id' => 1
+            'team_id' => 1,
         ];
 
         $response = $this->postJson('/api/players', $data);

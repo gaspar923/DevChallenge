@@ -3,7 +3,6 @@
 namespace App\Domains\User\Repository;
 
 use App\Domains\User\Entities\User as UserEntity;
-
 use App\Models\User as UserModel;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,7 +30,7 @@ class UserRepository
     {
         $user = UserModel::find($id);
 
-        if (!$user) {
+        if (! $user) {
             return null;
         }
 
@@ -50,7 +49,7 @@ class UserRepository
     {
         $user = UserModel::where('email', $email)->first();
 
-        if (!$user) {
+        if (! $user) {
             return null;
         }
 

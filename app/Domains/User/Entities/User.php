@@ -5,14 +5,20 @@ namespace App\Domains\User\Entities;
 class User
 {
     private int $id;
+
     private string $name;
+
     private string $email;
+
     private string $password;
+
     private ?string $token;
+
     private int $created_by;
+
     private int $updated_by;
 
-    public function __construct(int $id, string $name, string $email, string $password, ?string $token = null, int $created_by, int $updated_by)
+    public function __construct(int $id, string $name, string $email, string $password, ?string $token, int $created_by, int $updated_by)
     {
         $this->id = $id;
         $this->name = $name;

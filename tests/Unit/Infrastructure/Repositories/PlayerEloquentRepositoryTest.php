@@ -16,7 +16,7 @@ class PlayerEloquentRepositoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->playerRepository = new PlayerEloquentRepository();
+        $this->playerRepository = new PlayerEloquentRepository;
     }
 
     public function it_can_create_a_player()
@@ -24,7 +24,7 @@ class PlayerEloquentRepositoryTest extends TestCase
         $player = $this->playerRepository->create([
             'name' => 'Leo Messi',
             'age' => 36,
-            'team_id' => 1
+            'team_id' => 1,
         ]);
 
         $this->assertDatabaseHas('players', ['name' => 'Leo Messi']);

@@ -13,17 +13,17 @@ class TeamController extends Controller
      */
     public function index()
     {
-        if (request()->has("page")) {
-            $teams = Team::orderBy("name", 'asc');
+        if (request()->has('page')) {
+            $teams = Team::orderBy('name', 'asc');
             // dd($competitions);
             // $name = "";
-            if (request()->has("name")) {
+            if (request()->has('name')) {
                 $teams = $teams->where(function ($query) {
-                    $name = request("name");
-                    $query->where('name', 'like', '%' . $name . '%');
+                    $name = request('name');
+                    $query->where('name', 'like', '%'.$name.'%');
                 });
             }
-            $teams = $teams->paginate(10)->appends(request()->except("page"));
+            $teams = $teams->paginate(10)->appends(request()->except('page'));
 
             return json_encode($teams);
         } else {
@@ -45,9 +45,10 @@ class TeamController extends Controller
     public function show(string $id)
     {
         $team = Team::find($id);
-        if (!$team) {
+        if (! $team) {
             return response()->json(['error' => 'Team not found'], 404);
         }
+
         return response()->json($team, 200);
     }
 

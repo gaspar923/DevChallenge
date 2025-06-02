@@ -42,10 +42,11 @@
 //     }
 // }
 
-use App\Domains\Player\Services\PlayerService;
-use App\Domains\Player\DTOs\PlayerDTO;
 use App\Domains\Player\Contracts\PlayerRepositoryInterface;
+use App\Domains\Player\DTOs\PlayerDTO;
 use App\Domains\Player\Models\Player;
+use App\Domains\Player\Services\PlayerService;
+
 // use Mockery;
 // use function Pest\Laravel\mock;
 
@@ -64,7 +65,7 @@ it('can create a player', function () {
         ->with([
             'name' => 'Cristiano Ronaldo',
             'age' => 39,
-            'team_id' => 2
+            'team_id' => 2,
         ])
         ->andReturn($mockPlayer);
 

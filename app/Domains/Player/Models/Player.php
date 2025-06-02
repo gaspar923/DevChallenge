@@ -2,8 +2,8 @@
 
 namespace App\Domains\Player\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Domains\Team\Models\Team;
+use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {

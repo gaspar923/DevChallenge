@@ -7,7 +7,6 @@ use App\Models\CompetitionTeam;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\TeamPlayer;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -37,7 +36,7 @@ class TeamSeeder extends Seeder
 
                 $response = Http::withHeaders([
                     'X-Auth-Token' => env('API_FOOTBALL_DATA_TOKEN'),
-                ])->get(env('API_FOOTBALL_DATA_URL') . '/competitions/' . $competitions[$i]->id . '/teams');
+                ])->get(env('API_FOOTBALL_DATA_URL').'/competitions/'.$competitions[$i]->id.'/teams');
 
                 if ($response->successful()) {
                     $data = $response->json();
@@ -71,17 +70,17 @@ class TeamSeeder extends Seeder
 
                     $this->command->info('Team seeded successfully!');
                 } elseif ($response->failed()) {
-                    $this->command->error('Failed to seed Team: ' . $response->body());
+                    $this->command->error('Failed to seed Team: '.$response->body());
                 }
             }
         } catch (\Exception $e) {
-            $this->command->error('Failed to seed Team: ' . $e->getMessage());
+            $this->command->error('Failed to seed Team: '.$e->getMessage());
         }
 
         // php artisan db:seed --class=TeamSeeder
     }
 
-    function savePlayers($players, $team_id)
+    public function savePlayers($players, $team_id)
     {
         // foreach ($team['squad'] as $player) {
         foreach ($players as $player) {
@@ -98,7 +97,7 @@ class TeamSeeder extends Seeder
                     'nationality' => $player['nationality'],
                 ]);
 
-                // To add players to a team: 
+                // To add players to a team:
                 $team = Team::find($team_id);
                 $team->players()->attach([$player['id']]);
 

@@ -13,17 +13,17 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        if (request()->has("page")) {
-            $players = Player::orderBy("name", 'asc');
+        if (request()->has('page')) {
+            $players = Player::orderBy('name', 'asc');
             // dd($players);
             // $name = "";
-            if (request()->has("name")) {
+            if (request()->has('name')) {
                 $players = $players->where(function ($query) {
-                    $name = request("name");
-                    $query->where('name', 'like', '%' . $name . '%');
+                    $name = request('name');
+                    $query->where('name', 'like', '%'.$name.'%');
                 });
             }
-            $players = $players->paginate(10)->appends(request()->except("page"));
+            $players = $players->paginate(10)->appends(request()->except('page'));
 
             return json_encode($players);
         } else {

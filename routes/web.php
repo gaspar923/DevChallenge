@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Web\PlayerController;
 use App\Http\Controllers\Web\CompetitionController;
+use App\Http\Controllers\Web\PlayerController;
 use App\Http\Controllers\Web\TeamController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Foundation\Application;

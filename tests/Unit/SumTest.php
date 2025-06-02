@@ -1,4 +1,5 @@
 <?php
+
 // php artisan test --filter=SumTest
 
 test('sum', function () {

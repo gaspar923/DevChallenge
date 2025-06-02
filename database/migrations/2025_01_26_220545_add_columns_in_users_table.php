@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('created_by');
             $table->foreignId('updated_by');
-            $table->integer("active")->default('1');
+            $table->integer('active')->default('1');
         });
     }
 
@@ -24,9 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn("created_by");
-            $table->dropColumn("updated_by");
-            $table->dropColumn("active");
+            $table->dropColumn('created_by');
+            $table->dropColumn('updated_by');
+            $table->dropColumn('active');
         });
     }
 };

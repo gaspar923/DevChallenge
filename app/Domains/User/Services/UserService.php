@@ -3,9 +3,9 @@
 namespace App\Domains\User\Services;
 
 use App\Domains\User\Entities\User;
+use App\Domains\User\Repository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Domains\User\Repository\UserRepository;
 use Illuminate\Validation\ValidationException;
 
 class UserService
@@ -38,7 +38,7 @@ class UserService
     {
         $credentials = $this->validateLoginData($data);
 
-        if (!Auth::attempt($credentials)) {
+        if (! Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
                 'email' => ['Invalid email or password'],
             ]);

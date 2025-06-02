@@ -7,16 +7,17 @@ use Illuminate\Validation\Rules\Password;
 
 class StoreUserPost extends FormRequest
 {
-    function attributes()
+    public function attributes()
     {
         return [
-            'name' => "nombre",
-            'email' => "email",
-            'password' => "contraseña",
+            'name' => 'nombre',
+            'email' => 'email',
+            'password' => 'contraseña',
 
-            'role' => "rol",
+            'role' => 'rol',
         ];
     }
+
     /**
      * Determine if the user is authorized to make this request.
      */
