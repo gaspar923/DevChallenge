@@ -23,3 +23,12 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: "laravel-pint"
         run: ./vendor/bin/pint
+      - name: Create Database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+      - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan test
