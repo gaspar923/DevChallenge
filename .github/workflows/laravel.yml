@@ -3,6 +3,12 @@ name: DevChallenge CI
 on:
   push:
     branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+concurrency:
+  group: ci-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
   laravel-tests:
