@@ -1,4 +1,4 @@
-name: Test Name
+name: DevChallenge CI
 
 on:
   push:
@@ -22,12 +22,4 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: "laravel-pint"
-        uses: aglipanci/laravel-pint-action@latest
-        with:
-          preset: laravel
-          verboseMode: true
-          testMode: true
-          configPath: "vendor/my-company/coding-style/pint.json"
-          pintVersion: 1.8.0
-          onlyDirty: true
-          onlyDiff: "main"
+        run: ./vendor/bin/pint
