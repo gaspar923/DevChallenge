@@ -2,13 +2,16 @@ name: Test Name
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   laravel-tests:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: 'Hello World'
-      run: echo 'Hello World..'
+      - name: "Hello World"
+        run: echo 'Hello World..'
+      - name: "Dime la fecha"
+        run: date
+      - name: "Muestra el contenido del directorio"
+        run: ls -la
