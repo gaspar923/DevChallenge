@@ -28,3 +28,5 @@ Terminado las pruebas, comencé el desarrollo.
 
 -   email: prueba_usuario@gmail.com
 -   contraseña: qEFqD7y92CSLyZ
+
+[![DevChallenge CI](https://github.com/gaspar923/DevChallenge/actions/workflows/laravel.yml/badge.svg)](https://github.com/gaspar923/DevChallenge/actions/workflows/laravel.yml)
